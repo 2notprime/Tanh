@@ -71,9 +71,13 @@ body{
 
 /* remove arrows from number input */
 .input__area input::-webkit-outer-spin-button,
-.input__area input::-webkit-inner-spin-button{
+.input__area input::-webkit-inner-spin-button,
+.input_saving input::-webkit-inner-spin-button,
+.input_saving input::-webkit-outer-spin-button
+{
     -webkit-appearance: none;
 }
+
 
 .buttons__area{
     margin: 10px 0 3rem;

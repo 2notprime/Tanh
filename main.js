@@ -50,9 +50,11 @@ const itemCtrl = (function(){
             const index = ids.indexOf(id)
             //remove item
             data.items.splice(index, 1);
-        }
+        },
     }
 })();
+
+
 
 //UI CONTROLLER
 const UICtrl = (function(){
@@ -63,15 +65,17 @@ const UICtrl = (function(){
         savingBtn: '#add__saving',
         description: '#description',
         amount: '#amount',
-        saving: 'saving_amount',
+        saving: '#saving_amount',
         moneyEarned: '#amount__earned',
         moneyAvailable: '#amount__available',
         moneySpent: '#amount__spent',
+        moneySaving: '#amount_saving',
         incomeList: '#income__container',
         expensesList: '#expenses__container',
         incomeItem: '.income__amount',
         expenseItem: '.expense__amount',
-        itemsContainer: '.items__container'
+        itemsContainer: '.items__container',
+        percentage: '#js-percentage-display'
     }
     //public methods
     return{
@@ -94,6 +98,7 @@ const UICtrl = (function(){
                 savingInput: document.querySelector(UISelectors.saving).value
             }
         },
+        
         addIncomeItem: function(item){
             //create new div
             const div = document.createElement('div');
@@ -160,11 +165,28 @@ const UICtrl = (function(){
             // display the total spent
             const expensesTotal = document.querySelector(UISelectors.moneySpent).innerHTML = expenseSum;
         },
+        updateSaving: function(){
+            const saving = document.querySelector(UISelectors.saving).value;
+            const earned = document.querySelector(UISelectors.moneyEarned);
+            const savingAvailable = document.querySelector(UISelectors.moneySaving)
+            savingAvailable.innerHTML = (((+earned.innerHTML)*(+saving))/100).toFixed(2);
+
+
+        },
         updateAvailable: function(){
             const earned = document.querySelector(UISelectors.moneyEarned);
-            const spent = document.querySelector(UISelectors.moneySpent)
+            const spent = document.querySelector(UISelectors.moneySpent);
+            const saving = document.querySelector(UISelectors.moneySaving);
             const available = document.querySelector(UISelectors.moneyAvailable);
-            available.innerHTML = ((+earned.innerHTML)-(+spent.innerHTML)).toFixed(2)
+            available.innerHTML = ((+earned.innerHTML)-(+spent.innerHTML)-(+saving.innerHTML)).toFixed(2);
+            
+            
+        },
+        updatePercentage: function(){
+            const saving = document.querySelector(UISelectors.saving).value;
+            const available = document.querySelector(UISelectors.percentage);
+            console.log(saving);
+            available.innerHTML = saving;
         },
         deleteAmount: function(id){
             //create the id we will select
@@ -176,6 +198,7 @@ const UICtrl = (function(){
         }
     }
 })();
+
 
 //APP CONTROLLER
 const App = (function(){
@@ -198,6 +221,7 @@ const App = (function(){
         //get description and amount values
         const description = UICtrl.getDescriptionInput();
         const amount = UICtrl.getValueInput();
+        
         //if inputs are not empty
         if(description.descriptionInput !=='' && amount.amountInput !== ''){
             //add new item
@@ -229,6 +253,16 @@ const App = (function(){
             //update total spent
             UICtrl.updateSpent();
             //calculate money available
+            UICtrl.updateAvailable();
+        }
+    }
+
+    const addSaving = function (){
+        const percentage = UICtrl.getSavingInput();
+ 
+        if (percentage.savingInput !== ''){
+            UICtrl.updateSaving();
+            UICtrl.updatePercentage();
             UICtrl.updateAvailable();
         }
     }

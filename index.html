@@ -25,7 +25,7 @@
                     <span id="amount__available"></span>
                 </div>
             </div>
-            <div id="'saving" class="number">
+            <div id="saving" class="number">
                 <small>Money Saving</small>
                 <div class="amount__container">
                     <p>$</p>
@@ -39,6 +39,14 @@
                     <span id="amount__spent"></span>
                 </div>
             </div>
+            <div id="js-percentage" class="number" style="display: none;">
+                <small>Percentage</small>
+                <div class="amount__container">
+                    <p>$</p>
+                    <span id="js-percentage-display"></span>
+                </div>
+            </div>
+            
             
         </div>
         <div class="input__area">
@@ -50,13 +58,11 @@
             <button id="add__expense">Add Expense</button>
         </div>
         <div class="input_saving">
-            <input type="text" id="saving_amount" placeholder="What percentage of your income do you want to save?">
+            <input type="number" id="saving_amount" placeholder="What percentage of your income do you want to save?">
         </div>
         <div class="buttons__saving">
             <button id="add__saving">Saving</button>
-            <div id="saving" class="container">
-                <small>%</small>
-            </div>
+            
         </div>
         
         <div class="items__container">
