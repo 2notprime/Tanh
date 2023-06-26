@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+
 
     <title>Budget App</title>
 </head>
+
 <body>
     <div class="container">
         <div class="budget__numbers">
@@ -46,8 +50,8 @@
                     <span id="js-percentage-display"></span>
                 </div>
             </div>
-            
-            
+
+
         </div>
         <div class="input__area">
             <input type="text" id="description" placeholder="Description">
@@ -62,9 +66,9 @@
         </div>
         <div class="buttons__saving">
             <button id="add__saving">Saving</button>
-            
+
         </div>
-        
+
         <div class="items__container">
             <div id="income__container" class="container">
                 <h2>Income</h2>
@@ -88,9 +92,35 @@
                     <i class="far fa-trash-alt"></i>
                 </div> -->
             </div>
+
+
         </div>
+        <canvas id="myChart" class="chart">
+
+        </canvas>
     </div>
 
     <script src="main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // const ctx = document.getElementById('myChart');
+
+        // new Chart(ctx, {
+        //     type: 'pie',
+        //     data: {
+        //         datasets: [{
+        //             data: [50, 50]
+        //         }],
+
+        //         // These labels appear in the legend and in the tooltips when hovering different arcs
+        //         labels: [
+        //             'Red',
+        //             'Yellow',
+        //             'Blue'
+        //         ]
+        //     }
+        // });
+    </script>
 </body>
+
 </html>
